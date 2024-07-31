@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequiredArgsConstructor
@@ -56,6 +55,13 @@ public class HomeController {
     public String delete(@PathVariable("id") Long id) {
         articleRepository.deleteById(id);
         return "redirect:/list";
+    }
+
+    @GetMapping("/view/{id}")
+    public String view(@PathVariable("id") Long id, Model model){
+        var article = articleRepository.findById(id).orElseThrow(()-> new IllegalArgumentException("Invalid task Id:" + id));
+        model.addAttribute("article", article);
+        return "view-page";
     }
 
 }

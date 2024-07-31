@@ -3,10 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>My Board View Page</title>
+
 </head>
 <body>
     <div th:replace="nav :: navbar"></div>
+    <div id="container">
+        <h2 th:text="${article.title}"></h2>
+        <p th:text="${article.main_text}"></p>
 
+        <hr>
+
+        <a th:href="@{/edit/{id}(id=${article.id})}"><button>수정</button></a>
+        <a th:href="@{/delete/{id}(id=${article.id})}"><button>삭제</button></a>
+
+    </div>
 
     <div th:replace="~{nav :: footer}"></div>
 </body>
