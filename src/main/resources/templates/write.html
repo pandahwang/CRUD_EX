@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Board Write Page</title>
+</head>
+<body>
+    <div th:replace="~{nav :: navbar}"></div>
+
+    <form class="form" action="/post" method="POST">
+        <fieldset>
+            <legend>글 작성</legend>
+            <input type="text" name="title" value="작업 제목"><br>
+            <input type="text" name="main_text" value="작업 내용"><br>
+            <input type="text" name="status" value="상태"><br>
+            <input type="submit" value="작성">
+            <input type="reset" value="초기화">
+        </fieldset>
+
+    <div th:replace="~{nav :: footer}"></div>
+</body>
+</html>
