@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
 @Controller
 @RequiredArgsConstructor
 public class HomeController {
@@ -22,8 +24,20 @@ public class HomeController {
 
     @GetMapping("/list")
     public String list(Model model){
+        List<Article> articles = articleRepository.findAll();
+        articles.forEach(article -> {
+            String truncatedText = truncate(article.getMain_text());
+            article.setMain_text(truncatedText);
+        });
         model.addAttribute("Articles",articleRepository.findAll());
         return "list.html";
+    }
+    // 본문 내용을 10글자로 자르고 + ...
+    private String truncate(String text) {
+        if (text == null || text.length() <= 10) {
+            return text;
+        }
+        return text.substring(0, 10) + "...";
     }
 
     @GetMapping("/write")
