@@ -12,7 +12,6 @@ public class Article {
     private Long id;
     private String title;
     private String main_text;
-    private String status;
 
     public Long getId() {
         return id;
@@ -38,11 +37,4 @@ public class Article {
         this.main_text = main_text;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
 }
