@@ -3,18 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>My Board Write Page</title>
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
     <div th:replace="~{nav :: navbar}"></div>
-
-    <form class="form" action="/post" method="POST">
-        <fieldset>
-            <legend>글 작성</legend>
-            <input type="text" name="title" value="제목"><br>
-            <input type="text" name="main_text" value="내용"><br>
-            <input type="submit" value="작성">
-            <input type="reset" value="초기화">
-        </fieldset>
+    <div class="container">
+        <form class="form" action="/post" method="POST">
+            <fieldset>
+                <legend>글 작성</legend>
+                <input type="text" name="title" value="제목"><br>
+                <input type="text" name="main_text" value="내용"><br>
+                <input type="submit" value="작성">
+                <input type="reset" value="초기화">
+            </fieldset>
+        </div>
 
     <div th:replace="~{nav :: footer}"></div>
 </body>

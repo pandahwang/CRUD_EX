@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>    
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="nav" th:fragment="navbar">
+        <a class="logo" href="/">My Board</a>
+        <a class="list" href="/list">글 목록</a>
+        <a class="write" href="/write">쓰기</a>
+    </div>
+
+
+    <div class="container">
+
+        <table class="list">
+            <tr th:each="article : ${Articles}">
+                <td th:text="${article.title}">이건 내 글 제목임</td>
+                <td> <a th:text="${article.main_text}" th:href="@{/view/{id}(id=${article.id})}">이건 내 글 내용이구요 주저리주저리주저리주저리</a></td>
+                <td><a th:href="@{/edit/{id}(id=${article.id})}"><button>수정</button></a></td>
+                <td><a th:href="@{/delete/{id}(id=${article.id})}"><button>삭제</button></a></td>
+                <td></td>
+            </tr>
+        </table>
+
+    </div>
+    
+    <div class="footer" th:fragment="footer">
+        <p>CRUD demo project</p>
+    </div>
+</body>
+</html>
