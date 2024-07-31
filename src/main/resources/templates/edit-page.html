@@ -14,9 +14,9 @@
         <form th:action="@{/update/{id}(id=${article.id})}" method="POST">
             <fieldset>
                 <legend>글 수정</legend>
-                <input type="text" name="title" th:value="${article.title}"><br>
-                <input type="text" name="main_text" th:value="${article.main_text}"><br>
-                <input type="submit" value="수정"><br>
+                제목<input type="text" name="title" th:value="${article.title}"><br>
+                내용<input type="text" name="main_text" th:value="${article.main_text}"><br>
+                <input type="submit" value="수정">
                 <input type="reset" value="초기화">
             </fieldset>
         </form>
