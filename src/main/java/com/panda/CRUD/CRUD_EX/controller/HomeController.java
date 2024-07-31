@@ -45,4 +45,11 @@ public class HomeController {
         return "edit-page";
     }
 
+    @PostMapping("/update/{id}")
+    public String update(@PathVariable("id") Long id, Article article) {
+        article.setId(id);
+        articleRepository.save(article);
+        return "redirect:/list";
+    }
+
 }
