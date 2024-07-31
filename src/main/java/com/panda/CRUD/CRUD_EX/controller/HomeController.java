@@ -52,4 +52,10 @@ public class HomeController {
         return "redirect:/list";
     }
 
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable("id") Long id) {
+        articleRepository.deleteById(id);
+        return "redirect:/list";
+    }
+
 }
