@@ -11,11 +11,14 @@
         <form class="form" action="/post" method="POST">
             <fieldset>
                 <legend>글 작성</legend>
-                <input type="text" name="title" placeholder="제목" required><br>
-                <input type="text" name="main_text" placeholder="내용" required><br>
+                <input type="text" name="title" placeholder="제목" maxlength="100" required><br>
+                <textarea type="text" name="mainText" placeholder="내용" maxlength="10000" required></textarea><br>
                 <input type="submit" value="작성">
-                <input type="reset" value="초기화">
+                <input type="reset" value="초기화"><br>
+                <hr>
+                <span th:text="${error}"></span>
             </fieldset>
+            </form>
         </div>
 
     <div th:replace="~{nav :: footer}"></div>

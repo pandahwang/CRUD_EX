@@ -11,17 +11,23 @@ public class PostService {
     @Autowired
     public ArticleRepository articleRepository;
 
-    public void postArticle(Article article){
-        try{
-            if(!article.getTitle().isEmpty() && !article.getMain_text().isEmpty())
-            {
-                articleRepository.save(article);
-            }
-            else
-            {
+    public void postArticle(Article article) throws IllegalArgumentException {
+        if (article.getTitle().trim().isEmpty()) {
+            throw new IllegalArgumentException("제목을 입력해주세요.");
+        }
 
-            }
-        }catch (Exception e){}
+        if (article.getMainText().trim().isEmpty()) {
+            throw new IllegalArgumentException("내용을 입력해주세요.");
+        }
+
+        if(article.getTitle().length()>100) {
+            throw new IllegalArgumentException("제목은 100 글자를 초과할 수 없습니다.");
+        }
+        if(article.getMainText().length()>10000){
+            throw new IllegalArgumentException("내용은 10000 글자를 초과할 수 없습니다.");
+        }
+
+        articleRepository.save(article);
     }
 
 

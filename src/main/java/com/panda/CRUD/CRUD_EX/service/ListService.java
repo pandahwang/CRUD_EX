@@ -18,8 +18,8 @@ public class ListService {
     public void getList(Model model){
         List<Article> articles = articleRepository.findAll();
         articles.forEach(article -> {
-            String truncatedText = truncate(article.getMain_text());
-            article.setMain_text(truncatedText);
+            String truncatedText = truncate(article.getMainText());
+            article.setMainText(truncatedText);
         });
         model.addAttribute("Articles", articles);
     }

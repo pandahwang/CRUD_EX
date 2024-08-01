@@ -1,17 +1,16 @@
 package com.panda.CRUD.CRUD_EX.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(length = 100)
     private String title;
-    private String main_text;
+    @Column(columnDefinition = "TEXT")
+    private String mainText;
 
     public Long getId() {
         return id;
@@ -29,12 +28,12 @@ public class Article {
         this.title = title;
     }
 
-    public String getMain_text() {
-        return main_text;
+    public String getMainText() {
+        return mainText;
     }
 
-    public void setMain_text(String main_text) {
-        this.main_text = main_text;
+    public void setMainText(String main_text) {
+        this.mainText = main_text;
     }
 
 }
