@@ -2,7 +2,9 @@ package com.panda.CRUD.CRUD_EX.controller;
 
 import com.panda.CRUD.CRUD_EX.model.Article;
 import com.panda.CRUD.CRUD_EX.repository.ArticleRepository;
+import com.panda.CRUD.CRUD_EX.service.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,10 +14,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.util.List;
 
 @Controller
-@RequiredArgsConstructor
 public class HomeController {
-
-    private final ArticleRepository articleRepository;
+    @Autowired
+    public ArticleRepository articleRepository;
+    @Autowired
+    public ListService listService;
+    @Autowired
+    public PostService postService;
+    @Autowired
+    public UpdateService updateService;
+    @Autowired
+    public DeleteService deleteService;
+    @Autowired
+    public ViewService viewService;
 
     @GetMapping("/")
     public String home(){
@@ -24,30 +35,18 @@ public class HomeController {
 
     @GetMapping("/list")
     public String list(Model model){
-        List<Article> articles = articleRepository.findAll();
-        articles.forEach(article -> {
-            String truncatedText = truncate(article.getMain_text());
-            article.setMain_text(truncatedText);
-        });
-        model.addAttribute("Articles",articleRepository.findAll());
+        listService.getList(model);
         return "list.html";
-    }
-    // 본문 내용을 10글자로 자르고 + ...
-    private String truncate(String text) {
-        if (text == null || text.length() <= 10) {
-            return text;
-        }
-        return text.substring(0, 10) + "...";
     }
 
     @GetMapping("/write")
-    public String asdf(){
+    public String write(){
         return "write.html";
     }
 
     @PostMapping("/post")
     public String post(Article article){
-        articleRepository.save(article);
+        postService.postArticle(article);
         return "redirect:/list";
     }
 
@@ -60,21 +59,19 @@ public class HomeController {
 
     @PostMapping("/update/{id}")
     public String update(@PathVariable("id") Long id, Article article) {
-        article.setId(id);
-        articleRepository.save(article);
+        updateService.updateArticle(id, article);
         return "redirect:/list";
     }
 
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") Long id) {
-        articleRepository.deleteById(id);
+        deleteService.deleteArticle(id);
         return "redirect:/list";
     }
 
     @GetMapping("/view/{id}")
     public String view(@PathVariable("id") Long id, Model model){
-        var article = articleRepository.findById(id).orElseThrow(()-> new IllegalArgumentException("Invalid task Id:" + id));
-        model.addAttribute("article", article);
+        viewService.viewArticle(id, model);
         return "view-page";
     }
 
