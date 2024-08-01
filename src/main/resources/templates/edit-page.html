@@ -18,6 +18,8 @@
                 내용<input type="text" name="mainText" th:value="${article.mainText}" required><br>
                 <input type="submit" value="수정">
                 <input type="reset" value="초기화">
+                <hr>
+                <span th:text="${error}"></span>
             </fieldset>
         </form>
     </div>

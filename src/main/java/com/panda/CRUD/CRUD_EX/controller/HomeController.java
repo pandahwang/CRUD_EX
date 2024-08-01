@@ -62,13 +62,21 @@ public class HomeController {
     public String edit(@PathVariable("id") Long id, Model model){
         var article = articleRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid task Id:" + id));
         model.addAttribute("article", article);
-        return "edit-page";
+        return "edit-page.html";
     }
 
     @PostMapping("/update/{id}")
-    public String update(@PathVariable("id") Long id, Article article) {
-        updateService.updateArticle(id, article);
-        return "redirect:/list";
+    public String update(@PathVariable("id") Long id, Article article, Model model) {
+        try
+        {
+            updateService.updateArticle(id, article);
+            return "redirect:/list";
+        }
+        catch (IllegalArgumentException e)
+        {
+            model.addAttribute("error",e.getMessage());
+            return "edit-page.html";
+        }
     }
 
     @GetMapping("/delete/{id}")

@@ -12,6 +12,22 @@ public class UpdateService {
 
     public void updateArticle(Long id, Article article){
         article.setId(id);
+
+        if (article.getTitle().trim().isEmpty()) {
+            throw new IllegalArgumentException("제목을 입력해주세요.");
+        }
+
+        if (article.getMainText().trim().isEmpty()) {
+            throw new IllegalArgumentException("내용을 입력해주세요.");
+        }
+
+        if(article.getTitle().length()>100) {
+            throw new IllegalArgumentException("제목은 100 글자를 초과할 수 없습니다.");
+        }
+        if(article.getMainText().length()>10000){
+            throw new IllegalArgumentException("내용은 10000 글자를 초과할 수 없습니다.");
+        }
+
         articleRepository.save(article);
     }
 }
