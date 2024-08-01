@@ -45,9 +45,17 @@ public class HomeController {
     }
 
     @PostMapping("/post")
-    public String post(Article article){
-        postService.postArticle(article);
-        return "redirect:/list";
+    public String post(Article article, Model model){
+        try
+        {
+            postService.postArticle(article);
+            return "redirect:/list";
+        }
+        catch (IllegalArgumentException e)
+        {
+            model.addAttribute("error",e.getMessage());
+            return "write.html";
+        }
     }
 
     @GetMapping("/edit/{id}")
