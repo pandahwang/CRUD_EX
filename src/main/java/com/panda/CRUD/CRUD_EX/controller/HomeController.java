@@ -15,80 +15,10 @@ import java.util.List;
 
 @Controller
 public class HomeController {
-    @Autowired
-    public ArticleRepository articleRepository;
-    @Autowired
-    public ListService listService;
-    @Autowired
-    public PostService postService;
-    @Autowired
-    public UpdateService updateService;
-    @Autowired
-    public DeleteService deleteService;
-    @Autowired
-    public ViewService viewService;
 
     @GetMapping("/")
     public String home(){
         return "../static/index.html";
-    }
-
-    @GetMapping("/list")
-    public String list(Model model){
-        listService.getList(model);
-        return "list.html";
-    }
-
-    @GetMapping("/write")
-    public String write(){
-        return "write.html";
-    }
-
-    @PostMapping("/post")
-    public String post(Article article, Model model){
-        try
-        {
-            postService.postArticle(article);
-            return "redirect:/list";
-        }
-        catch (IllegalArgumentException e)
-        {
-            model.addAttribute("error",e.getMessage());
-            return "write.html";
-        }
-    }
-
-    @GetMapping("/edit/{id}")
-    public String edit(@PathVariable("id") Long id, Model model){
-        var article = articleRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid task Id:" + id));
-        model.addAttribute("article", article);
-        return "edit-page.html";
-    }
-
-    @PostMapping("/update/{id}")
-    public String update(@PathVariable("id") Long id, Article article, Model model) {
-        try
-        {
-            updateService.updateArticle(id, article);
-            return "redirect:/list";
-        }
-        catch (IllegalArgumentException e)
-        {
-            model.addAttribute("error",e.getMessage());
-            return "edit-page.html";
-        }
-    }
-
-    @GetMapping("/delete/{id}")
-    public String delete(@PathVariable("id") Long id) {
-        deleteService.deleteArticle(id);
-        return "redirect:/list";
-    }
-
-    @GetMapping("/view/{id}")
-    public String view(@PathVariable("id") Long id, Model model){
-        viewService.viewArticle(id, model);
-        return "view-page";
     }
 
 }
