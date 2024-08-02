@@ -14,6 +14,7 @@
 <div th:replace="~{nav :: navbar}"></div>
     <div class="container">
         <form th:action="@{/update/{id}(id=${article.id})}" method="POST">
+            <input type="hidden" name="_method" value="PUT">
             <fieldset>
                 <legend>글 수정</legend>
                 제목<input type="text" name="title" th:value="${article.title}" maxlength="100" required><br>
