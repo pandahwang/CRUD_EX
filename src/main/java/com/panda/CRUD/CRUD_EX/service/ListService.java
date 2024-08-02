@@ -2,7 +2,6 @@ package com.panda.CRUD.CRUD_EX.service;
 
 import com.panda.CRUD.CRUD_EX.model.Article;
 import com.panda.CRUD.CRUD_EX.repository.ArticleRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
