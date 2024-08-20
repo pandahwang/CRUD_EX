@@ -1,7 +1,6 @@
-package com.panda.CRUD.CRUD_EX.controller;
+package com.panda.CRUD.CRUD_EX.Article.controller;
 
-import com.panda.CRUD.CRUD_EX.repository.ArticleRepository;
-import com.panda.CRUD.CRUD_EX.service.ListService;
+import com.panda.CRUD.CRUD_EX.Article.service.ListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

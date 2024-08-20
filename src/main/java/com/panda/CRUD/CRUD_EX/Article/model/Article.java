@@ -1,4 +1,4 @@
-package com.panda.CRUD.CRUD_EX.model;
+package com.panda.CRUD.CRUD_EX.Article.model;
 
 import jakarta.persistence.*;
 

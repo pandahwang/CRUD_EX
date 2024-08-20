@@ -1,6 +1,6 @@
-package com.panda.CRUD.CRUD_EX.repository;
+package com.panda.CRUD.CRUD_EX.Article.repository;
 
-import com.panda.CRUD.CRUD_EX.model.Article;
+import com.panda.CRUD.CRUD_EX.Article.model.Article;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,7 +1,7 @@
-package com.panda.CRUD.CRUD_EX.controller;
+package com.panda.CRUD.CRUD_EX.Article.controller;
 
-import com.panda.CRUD.CRUD_EX.model.Article;
-import com.panda.CRUD.CRUD_EX.service.PostService;
+import com.panda.CRUD.CRUD_EX.Article.model.Article;
+import com.panda.CRUD.CRUD_EX.Article.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

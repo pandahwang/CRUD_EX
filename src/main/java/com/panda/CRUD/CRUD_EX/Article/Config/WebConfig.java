@@ -1,4 +1,4 @@
-package com.panda.CRUD.CRUD_EX.Config;
+package com.panda.CRUD.CRUD_EX.Article.Config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

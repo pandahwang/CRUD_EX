@@ -1,7 +1,7 @@
-package com.panda.CRUD.CRUD_EX.service;
+package com.panda.CRUD.CRUD_EX.Article.service;
 
-import com.panda.CRUD.CRUD_EX.model.Article;
-import com.panda.CRUD.CRUD_EX.repository.ArticleRepository;
+import com.panda.CRUD.CRUD_EX.Article.repository.ArticleRepository;
+import com.panda.CRUD.CRUD_EX.Article.model.Article;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

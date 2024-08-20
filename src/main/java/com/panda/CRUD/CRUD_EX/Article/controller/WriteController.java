@@ -1,4 +1,4 @@
-package com.panda.CRUD.CRUD_EX.controller;
+package com.panda.CRUD.CRUD_EX.Article.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
